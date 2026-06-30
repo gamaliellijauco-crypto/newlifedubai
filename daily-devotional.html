@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Daily Devotional · New Life Dubai</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0a1020">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZX6JBB9ZJ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZX6JBB9ZJ2');
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Georgia, serif;
+      background: #0a1020;
+      color: #d4dde8;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Site Header ── */
+    .site-header {
+      padding: 36px 20px 22px;
+      text-align: center;
+      background: linear-gradient(180deg, #07111f 0%, #0a1020 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .church-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 8px;
+    }
+    .series-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .series-sub {
+      font-size: 12px;
+      color: #4a5870;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── Day Tab Bar ── */
+    .tab-bar {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 6px;
+      padding: 14px 16px;
+      background: #0a1020;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .tab-bar::-webkit-scrollbar { display: none; }
+
+    .day-tab {
+      flex: 0 0 auto;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: all 0.2s;
+      color: #4a5870;
+      background: transparent;
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+    }
+    .day-tab:hover { color: #8a9ab8; border-color: rgba(255,255,255,0.08); }
+    .day-tab.active {
+      background: #c9a96e;
+      color: #07111f;
+      border-color: #c9a96e;
+      font-weight: 700;
+    }
+    .day-tab .dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: #5a9e6f;
+      border-radius: 50%;
+      margin-left: 5px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+    .day-tab.active .dot { background: #07111f; }
+
+    /* ── Page Content ── */
+    .page {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    /* ── Day heading ── */
+    .day-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 10px;
+    }
+    .day-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      letter-spacing: -0.4px;
+      margin-bottom: 22px;
+    }
+
+    /* ── Scripture block ── */
+    .scripture-block {
+      background: rgba(201,169,110,0.07);
+      border-left: 3px solid #c9a96e;
+      border-radius: 0 12px 12px 0;
+      padding: 14px 18px;
+      margin-bottom: 28px;
+    }
+    .scripture-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: #c9a96e;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 6px;
+    }
+    .scripture-ref {
+      font-size: 14px;
+      color: #c4cfe0;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* ── Reflection ── */
+    .section-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: #3a5478;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 12px;
+    }
+    .reflection-body {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #9aadc4;
+      margin-bottom: 28px;
+    }
+    .reflection-body em { color: #dde5f0; font-style: italic; }
+
+    /* ── Application ── */
+    .app-block {
+      background: rgba(74,111,165,0.1);
+      border: 1px solid rgba(74,111,165,0.2);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 36px;
+    }
+    .app-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: #5a82b8;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 10px;
+    }
+    .app-question {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #8aabcc;
+      font-style: italic;
+    }
+
+    /* ── Divider ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+    }
+    .section-divider span {
+      font-size: 10px;
+      font-weight: 700;
+      color: #c9a96e;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    /* ── Journal Card ── */
+    .journal-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 24px 20px;
+    }
+    .journal-header-row {
+      margin-bottom: 20px;
+    }
+    .journal-heading {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+    .journal-date {
+      font-size: 12px;
+      color: #3a4f68;
+    }
+
+    /* ── Prompt groups ── */
+    .prompt-group { margin-bottom: 18px; }
+    .prompt-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #3a5478;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #dde5f0;
+      background: rgba(255,255,255,0.04);
+      resize: none;
+      min-height: 80px;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      line-height: 1.65;
+      -webkit-appearance: none;
+    }
+    textarea::placeholder { color: rgba(255,255,255,0.14); }
+    textarea:focus {
+      outline: none;
+      border-color: rgba(201,169,110,0.5);
+      box-shadow: 0 0 0 3px rgba(201,169,110,0.08);
+      background: rgba(255,255,255,0.06);
+    }
+    .open-reflection textarea { min-height: 100px; }
+
+    .save-status {
+      text-align: right;
+      font-size: 11px;
+      color: rgba(255,255,255,0.15);
+      margin-top: 3px;
+      height: 15px;
+      padding-right: 2px;
+    }
+    .save-status.saved { color: #5a9e6f; }
+
+    /* ── Past entries toggle ── */
+    hr.thin {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin: 22px 0 16px;
+    }
+    .past-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 4px 0;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .past-toggle .ptlabel {
+      font-size: 11px;
+      font-weight: 700;
+      color: #3a4f68;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .chevron {
+      font-size: 12px;
+      color: #3a4f68;
+      transition: transform 0.2s;
+    }
+    .chevron.open { transform: rotate(180deg); }
+
+    .past-list { display: none; margin-top: 12px; }
+    .past-list.visible { display: block; }
+
+    .past-entry {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .past-entry:hover { background: rgba(255,255,255,0.06); }
+    .past-entry .pe-date {
+      font-size: 10px;
+      font-weight: 700;
+      color: #c9a96e;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      margin-bottom: 4px;
+    }
+    .past-entry .pe-preview {
+      font-size: 13px;
+      color: #4a5870;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      line-height: 1.5;
+    }
+    .no-entries {
+      text-align: center;
+      color: #2a3548;
+      font-size: 13px;
+      padding: 18px 0;
+    }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 300;
+      padding: 20px 16px;
+      align-items: flex-end;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #111d30;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 22px 22px 18px 18px;
+      padding: 24px 20px 36px;
+      width: 100%;
+      max-width: 480px;
+      max-height: 72vh;
+      overflow-y: auto;
+      animation: slideUp 0.2s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(28px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .modal-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .modal-mdate { font-size: 11px; font-weight: 700; color: #c9a96e; text-transform: uppercase; letter-spacing: 0.8px; }
+    .modal-close-btn {
+      background: rgba(255,255,255,0.07);
+      border: none;
+      color: #5a6878;
+      padding: 5px 11px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      line-height: 1.3;
+    }
+    .msec { margin-bottom: 18px; }
+    .msec-label { font-size: 10px; font-weight: 700; color: #5a82b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .msec-text { font-size: 14px; color: #8a9ab8; line-height: 1.7; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+<!-- Site header -->
+<header class="site-header">
+  <div class="church-name">New Life Dubai</div>
+  <div class="series-title">Stand. Now Walk.</div>
+  <div class="series-sub">Authority of the Believer · Seven-Day Devotional</div>
+</header>
+
+<!-- Day tab bar -->
+<nav class="tab-bar" id="tab-bar" aria-label="Day navigation"></nav>
+
+<!-- Content area -->
+<main class="page" id="page"></main>
+
+<!-- Past entry modal -->
+<div class="modal-overlay" id="modal" onclick="closeModalBg(event)">
+  <div class="modal-box">
+    <div class="modal-hdr">
+      <div class="modal-mdate" id="modal-date"></div>
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// ── Devotional content ──────────────────────────────────────────────────────
+
+const DAYS = [
+  {
+    label: 'Day 1 — Sunday',
+    title: 'You Are Not Fighting For Victory — You Are Fighting From It',
+    scripture: 'Colossians 2:14–15 | Revelation 12:11',
+    reflection: `There's a phrase I want to settle into you this week: you are not fighting <em>for</em> victory — you are fighting <em>from</em> it. We spend so much of our energy trying to win battles that Jesus already won long before we arrived. Colossians 2:15 says He <em>disarmed</em> principalities and powers. Past tense. Done. Every charge against us — every accusation, every record — was nailed to the cross and destroyed. Not reduced. Not renegotiated. Gone.
+
+Revelation 12:11 tells us how those who faced the accuser overcame him: by the blood of the Lamb and by the word of their testimony. Not by volume. Not by intensity. By standing on what Christ did and by saying so.
+
+You know, a squatter has no legal claim to the property — but he'll stay as long as we let him. We hold the deed. The question isn't whether the battle has been won. It's whether we're willing to live there.`,
+    application: 'Where in your life are you still fighting as though the outcome is uncertain — and what would genuinely shift in you if you believed that battle was already settled?',
+  },
+  {
+    label: 'Day 2 — Monday',
+    title: 'The Mirror You'd Rather Not Hold',
+    scripture: 'Galatians 5:19–21 | Romans 8:13',
+    reflection: `Most of us would rather blame the devil for things our own flesh is responsible for. I know — I've been there. We change apartments, change jobs, cut off friendships, and somehow the same problem follows. Because we brought ourselves along.
+
+Galatians 5:19–21 names the works of the flesh plainly: anger, jealousy, selfish ambition. These aren't demons to cast out. They're patterns to crucify. Romans 8:13 keeps it simple: <em>put to death the deeds of the body.</em>
+
+Here's a diagnostic from Sunday worth sitting with — the authority we carry in the spirit moves with the authority we exercise over our own flesh. They're inseparable. That means the starting place sometimes isn't a deliverance prayer — it's a decision to stop feeding the thing we've been praying against. That's not defeat. That's discipline. And learning the difference between what needs deliverance and what needs discipline is one of the most freeing things we'll ever do.`,
+    application: 'Is there a pattern you've been calling spiritual warfare that actually requires personal discipline — and what would it look like to take practical, concrete ownership of it this week?',
+  },
+  {
+    label: 'Day 3 — Tuesday',
+    title: 'The War Is Inside Your Head',
+    scripture: '2 Corinthians 10:4–5 | Romans 12:2',
+    reflection: `Here's something most of us don't say out loud: a lot of what we blame on the devil is our own thinking. Paul — the man who actually cast out demons — spent the majority of his letters not writing about external warfare, but about what was happening inside the minds of the people he loved.
+
+2 Corinthians 10:4–5 names the real battlefield: arguments, reasonings, every thought that exalts itself against the knowledge of God. A stronghold isn't a demon on a city. It's a thought pattern that has become a prison — built one brick at a time. The same fear, entertained repeatedly. The same offense, rehearsed daily. The same lie, never challenged. You built it. By the power of the Spirit, you can tear it down.
+
+Romans 12:2 isn't a suggestion — it's a description: real transformation comes by the <em>renewing</em> of the mind. The unrenewed mind is the problem. And renewal is available right now.`,
+    application: 'What thought, fear, or narrative have you been rehearsing that may have become a stronghold — and what specific truth from Scripture can you begin planting in its place this week?',
+  },
+  {
+    label: 'Day 4 — Wednesday',
+    title: 'What You Keep in the Dark',
+    scripture: 'James 4:6–7 | Proverbs 11:2',
+    reflection: `Sunday said something that hasn't left me: <em>the areas we hide in darkness are the areas of our future defeat.</em> That's not condemnation — it's a warning. And it's worth taking seriously.
+
+It wasn't weakness that brought the enemy down. Ezekiel 28 traces his fall to a heart that was lifted up. Pride isn't just a character flaw. According to Scripture, it is an access point. And James 4:7 — the verse we all love to quote — begins with a word we often skip right past: <em>Submit to God.</em> Then resist the devil and he will flee. Submit comes before resist. You cannot effectively resist from a posture of hidden pride.
+
+The greatest protection we have against the enemy is an honest heart before God. Not a perfect heart — an honest one. What we bring into the light loses its power over us. What we keep hidden keeps its grip. Repentance isn't failure. It's what closes the door.`,
+    application: 'Is there an area of your life — a pattern, an attitude, a resentment — that you've been keeping hidden from God, from yourself, or from someone you trust? What would it cost you to bring it into the light today?',
+  },
+  {
+    label: 'Day 5 — Thursday',
+    title: 'Dress for the Battle You've Already Won',
+    scripture: 'Ephesians 6:11–17 | 2 Corinthians 5:21',
+    reflection: `Ephesians 6 tells us to <em>put on</em> the whole armor of God. That verb matters. It's an act. A choice you make before you walk out the door — not something that happens automatically because you went to church last week.
+
+The Belt of Truth is the Word planted in you, not just quoted by you. The Breastplate of Righteousness is your answer to every voice of condemnation: not your record — His. <em>He became sin, so that we might become the righteousness of God in Him.</em> You approach God in His record. The Shield of Faith is built — and maintained — by the Word. A shield that isn't maintained cracks under pressure.
+
+The Sword of the Spirit is one scripture, spoken in faith, with precision. When Jesus was tempted in the wilderness, He didn't out-argue the devil. He said three words: <em>It is written.</em> Authority doesn't require volume. It requires the Word in your mouth and in your life. Dress accordingly.`,
+    application: 'Of the six pieces of armor from Sunday's message, which one do you most consistently neglect — and what does your day look like when that piece is missing?',
+  },
+  {
+    label: 'Day 6 — Friday',
+    title: 'Act Before the Evidence Arrives',
+    scripture: 'Mark 5:27–34 | Mark 10:46–52 | Romans 10:17',
+    reflection: `Two stories from the Gospels keep coming back to me. The woman with the issue of blood — twelve years of suffering — said it <em>before</em> she reached for Jesus: "If I touch His garment, I shall be made well." She declared it before she felt it. Then she reached.
+
+Blind Bartimaeus had every voice around him telling him to be quiet. He cried out louder. And before Jesus healed him, he threw off his beggar's coat — the identity of what he had been — before he could see what he was becoming.
+
+Both of them acted before they had evidence. Both declared before they had proof. Both received. Romans 10:17 says faith comes by hearing the Word of God. Not by feeling it first. Not by seeing it confirmed first. By hearing — and responding. Faith isn't waiting until the evidence arrives. It's what we do in the gap between the promise and the proof. That's where everything changes.`,
+    application: 'What is one thing God has been prompting you to do that requires acting before you have proof it will work — and what has been keeping you from taking that step?',
+  },
+  {
+    label: 'Day 7 — Saturday',
+    title: 'Authority Is the Foundation, Not the Destination',
+    scripture: 'Romans 8:29 | Philippians 1:6',
+    reflection: `The sermon closed with a sentence I can't shake: <em>Victory begins with the name of Jesus on our lips — but it will not be consummated until the nature of Jesus is in our hearts.</em>
+
+We can know every truth from this week. Quote every verse. Name every piece of armor. Rebuke the enemy correctly, theologically, loudly — and still be unchanged. Because authority without character is unsustainable. Position without formation is hollow.
+
+Romans 8:29 says God's ultimate goal for us wasn't just forgiveness — it was <em>conformity.</em> Being shaped into the image of His Son. Not self-improvement. Not trying harder. This is God at work in the deepest parts of who we are, making us more like Jesus — not just in what we say, but in who we are when no one is watching. The authority we've stood in this week is not the destination. It is the foundation. Now — we build.`,
+    application: 'Where is the gap between the authority you know you carry and the character that authority requires — and what is one area where you're asking God to close that gap in this coming season?',
+  },
+];
+
+// ── Journal config ──────────────────────────────────────────────────────────
+
+const STORAGE_KEY = 'nld_stand_now_walk_v1';
+const FIELDS = ['spoke', 'apply', 'prayer', 'extra'];
+const FIELD_META = {
+  spoke:  { icon: '💡', label: 'What spoke to me today?' },
+  apply:  { icon: '🚶', label: 'How will I apply this?' },
+  prayer: { icon: '🙏', label: 'My prayer today' },
+  extra:  { icon: '📝', label: 'Additional thoughts' },
+};
+
+// ── Date helpers ────────────────────────────────────────────────────────────
+
+const now          = new Date();
+const todayDOW     = now.getDay();           // 0 = Sunday
+let   activeIndex  = todayDOW;               // default to today's devotional
+
+function dateForIndex(i) {
+  const d = new Date(now);
+  d.setDate(d.getDate() - (todayDOW - i));
+  return d;
+}
+function keyForIndex(i) {
+  return dateForIndex(i).toISOString().split('T')[0];
+}
+function labelForIndex(i) {
+  return dateForIndex(i).toLocaleDateString('en-US', {
+    weekday: 'long', month: 'long', day: 'numeric'
+  });
+}
+
+// ── Storage ─────────────────────────────────────────────────────────────────
+
+function loadAll() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+  catch { return {}; }
+}
+function saveAll(data) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+  catch(e) { console.warn('localStorage unavailable:', e); }
+}
+
+function hasEntry(i) {
+  const d = loadAll()[keyForIndex(i)];
+  return d && FIELDS.some(f => d[f] && d[f].trim());
+}
+
+// ── Tab bar ─────────────────────────────────────────────────────────────────
+
+const SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+function renderTabs() {
+  document.getElementById('tab-bar').innerHTML = DAYS.map((_, i) => {
+    const active = i === activeIndex ? ' active' : '';
+    const dot    = hasEntry(i) ? '<span class="dot"></span>' : '';
+    return `<button class="day-tab${active}" onclick="switchDay(${i})" aria-pressed="${i === activeIndex}">
+      ${SHORT[i]} · ${i + 1}${dot}
+    </button>`;
+  }).join('');
+}
+
+// ── Main content ─────────────────────────────────────────────────────────────
+
+const saveTimers = {};
+
+function renderPage() {
+  const dev       = DAYS[activeIndex];
+  const key       = keyForIndex(activeIndex);
+  const dateLabel = labelForIndex(activeIndex);
+  const stored    = (loadAll()[key] || {});
+  const isToday   = activeIndex === todayDOW;
+
+  // Build reflection with paragraph breaks
+  const reflHtml = dev.reflection
+    .split('\n\n')
+    .map(p => `<p style="margin-bottom:1.2em">${p}</p>`)
+    .join('');
+
+  document.getElementById('page').innerHTML = `
+
+    <!-- Devotional content -->
+    <div class="day-eyebrow">${dev.label}</div>
+    <h2 class="day-title">${dev.title}</h2>
+
+    <div class="scripture-block">
+      <div class="scripture-tag">📖 Scripture Reading</div>
+      <div class="scripture-ref">${dev.scripture}</div>
+    </div>
+
+    <div class="section-tag">Reflection</div>
+    <div class="reflection-body">${reflHtml}</div>
+
+    <div class="app-block">
+      <div class="app-tag">✦ Application Question</div>
+      <div class="app-question">${dev.application}</div>
+    </div>
+
+    <!-- Journal -->
+    <div class="section-divider"><span>✍️ My Journal</span></div>
+
+    <div class="journal-card">
+      <div class="journal-header-row">
+        <div class="journal-heading">My Reflection</div>
+        <div class="journal-date">${dateLabel}${isToday ? ' · Today' : ''}</div>
+      </div>
+
+      ${FIELDS.map(f => `
+        <div class="prompt-group${f === 'extra' ? ' open-reflection' : ''}">
+          <div class="prompt-label">${FIELD_META[f].icon} ${FIELD_META[f].label}</div>
+          <textarea
+            id="j-${f}"
+            placeholder="Write here…"
+            rows="3"
+            aria-label="${FIELD_META[f].label}"
+          ></textarea>
+          <div class="save-status" id="js-${f}"></div>
+        </div>
+      `).join('')}
+
+      <hr class="thin">
+
+      <div class="past-toggle" id="past-toggle" onclick="togglePast()" aria-expanded="false">
+        <div class="ptlabel">📖 Past Entries</div>
+        <span class="chevron" id="chevron">▾</span>
+      </div>
+      <div class="past-list" id="past-list" role="list"></div>
+    </div>
+
+  `;
+
+  // Populate + wire textarea fields
+  FIELDS.forEach(f => {
+    const el = document.getElementById('j-' + f);
+    el.value = stored[f] || '';
+    el.addEventListener('input', () => {
+      autoResize(el);
+      scheduleAutosave(f, key, dateLabel);
+    });
+    autoResize(el);
+  });
+
+  pastOpen = false;
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.max(el.scrollHeight, 80) + 'px';
+}
+
+function scheduleAutosave(field, key, dateLabel) {
+  const status = document.getElementById('js-' + field);
+  if (status) { status.textContent = 'Saving…'; status.className = 'save-status'; }
+  clearTimeout(saveTimers[field]);
+  saveTimers[field] = setTimeout(() => {
+    const data = loadAll();
+    if (!data[key]) data[key] = { date: dateLabel };
+    data[key][field] = document.getElementById('j-' + field)?.value || '';
+    saveAll(data);
+    renderTabs();
+    if (status) {
+      status.textContent = '✓ Saved';
+      status.className = 'save-status saved';
+      setTimeout(() => { if (status) status.textContent = ''; }, 2000);
+    }
+  }, 700);
+}
+
+// ── Day switching ─────────────────────────────────────────────────────────
+
+function switchDay(i) {
+  activeIndex = i;
+  renderTabs();
+  renderPage();
+  pastOpen = false;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Past entries ──────────────────────────────────────────────────────────
+
+let pastOpen = false;
+
+function togglePast() {
+  pastOpen = !pastOpen;
+  document.getElementById('past-list').classList.toggle('visible', pastOpen);
+  document.getElementById('chevron').classList.toggle('open', pastOpen);
+  document.getElementById('past-toggle').setAttribute('aria-expanded', pastOpen);
+  if (pastOpen) renderPastList();
+}
+
+function renderPastList() {
+  const data = loadAll();
+  const listEl = document.getElementById('past-list');
+  if (!listEl) return;
+
+  const entries = Object.entries(data)
+    .filter(([k]) => /^\d{4}-\d{2}-\d{2}$/.test(k))
+    .sort((a, b) => b[0].localeCompare(a[0]));
+
+  if (!entries.length) {
+    listEl.innerHTML = '<div class="no-entries">No entries yet. Keep going! 🌱</div>';
+    return;
+  }
+
+  listEl.innerHTML = entries.map(([k, e]) => {
+    const preview = (e.spoke || e.apply || e.prayer || e.extra || '').trim();
+    const safe    = preview.substring(0, 130).replace(/</g,'&lt;');
+    return `<div class="past-entry" onclick="openEntry('${k}')" role="listitem">
+      <div class="pe-date">${e.date || k}</div>
+      <div class="pe-preview">${safe || '<em>No content</em>'}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── Entry viewer modal ─────────────────────────────────────────────────────
+
+function openEntry(key) {
+  const e = (loadAll()[key] || {});
+  document.getElementById('modal-date').textContent = e.date || key;
+
+  const sections = FIELDS.filter(f => e[f] && e[f].trim()).map(f =>
+    `<div class="msec">
+      <div class="msec-label">${FIELD_META[f].icon} ${FIELD_META[f].label}</div>
+      <div class="msec-text">${e[f].replace(/</g,'&lt;')}</div>
+    </div>`
+  ).join('');
+
+  document.getElementById('modal-body').innerHTML =
+    sections || '<div class="no-entries">Nothing written that day.</div>';
+
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModalBg(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── Boot ───────────────────────────────────────────────────────────────────
+
+renderTabs();
+renderPage();
+</script>
+</body>
+</html>

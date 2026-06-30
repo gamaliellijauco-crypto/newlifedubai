@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Come Before Him · New Life Dubai</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#07111f">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZX6JBB9ZJ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZX6JBB9ZJ2');
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Georgia, serif;
+      background: #07111f;
+      color: #d4dde8;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Site Header ── */
+    .site-header {
+      padding: 40px 20px 26px;
+      text-align: center;
+      background: linear-gradient(180deg, #050e1a 0%, #07111f 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .site-header::before {
+      content: 'PRAISE';
+      position: absolute;
+      right: -12px;
+      bottom: -14px;
+      font-size: clamp(60px,20vw,120px);
+      font-weight: 900;
+      color: rgba(255,255,255,0.025);
+      letter-spacing: -2px;
+      line-height: 1;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .church-name {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .series-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      margin-bottom: 4px;
+      position: relative;
+    }
+    .series-title span { color: #c9a96e; }
+    .series-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 22px;
+      position: relative;
+    }
+    .intro-note {
+      background: rgba(201,169,110,0.09);
+      border-left: 3px solid #c9a96e;
+      border-radius: 0 12px 12px 0;
+      padding: 14px 18px;
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+    .intro-note .note-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .intro-note p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+    }
+
+    /* ── Tab Bar ── */
+    .tab-bar {
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 6px;
+      padding: 14px 16px;
+      background: #07111f;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .tab-bar::-webkit-scrollbar { display: none; }
+
+    .day-tab {
+      flex: 0 0 auto;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: all 0.2s;
+      color: #3a4f68;
+      background: transparent;
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .day-tab:hover { color: #7a8fa8; border-color: rgba(255,255,255,0.07); }
+    .day-tab.active {
+      background: #c9a96e;
+      color: #07111f;
+      border-color: #c9a96e;
+      font-weight: 700;
+    }
+    .day-tab .dot {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      background: #5a9e6f;
+      border-radius: 50%;
+      margin-left: 5px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+    .day-tab.active .dot { background: #07111f; }
+
+    /* ── Page content ── */
+    .page {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    .day-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 10px;
+    }
+    .day-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      letter-spacing: -0.4px;
+      margin-bottom: 24px;
+    }
+
+    .scripture-block {
+      background: rgba(201,169,110,0.07);
+      border-left: 3px solid #c9a96e;
+      border-radius: 0 12px 12px 0;
+      padding: 14px 18px;
+      margin-bottom: 28px;
+    }
+    .scripture-tag {
+      font-size: 9px;
+      font-weight: 700;
+      color: #c9a96e;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+    .scripture-ref {
+      font-size: 14px;
+      color: #c4cfe0;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .section-tag {
+      font-size: 9px;
+      font-weight: 700;
+      color: #2a3f58;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .reflection-body {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #8aa0bc;
+      margin-bottom: 28px;
+    }
+    .reflection-body p { margin-bottom: 1.2em; }
+    .reflection-body p:last-child { margin-bottom: 0; }
+    .reflection-body em { color: #dde5f0; font-style: italic; }
+    .reflection-body strong { color: #dde5f0; font-weight: 700; }
+
+    .dots {
+      text-align: center;
+      color: #c9a96e;
+      letter-spacing: 8px;
+      font-size: 10px;
+      opacity: 0.4;
+      padding: 4px 0;
+      margin-bottom: 18px;
+    }
+
+    .app-block {
+      background: rgba(74,111,165,0.1);
+      border: 1px solid rgba(74,111,165,0.2);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 36px;
+    }
+    .app-tag {
+      font-size: 9px;
+      font-weight: 700;
+      color: #5a82b8;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+    .app-question {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #7a9abf;
+      font-style: italic;
+    }
+
+    /* ── Journal ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+    .section-divider span {
+      font-size: 10px;
+      font-weight: 700;
+      color: #c9a96e;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .journal-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 24px 20px;
+    }
+    .journal-heading { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+    .journal-date { font-size: 12px; color: #2a3f58; margin-bottom: 20px; }
+
+    .prompt-group { margin-bottom: 18px; }
+    .prompt-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #2a3f58;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #dde5f0;
+      background: rgba(255,255,255,0.04);
+      resize: none;
+      min-height: 80px;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      line-height: 1.65;
+      -webkit-appearance: none;
+    }
+    textarea::placeholder { color: rgba(255,255,255,0.12); }
+    textarea:focus {
+      outline: none;
+      border-color: rgba(201,169,110,0.45);
+      box-shadow: 0 0 0 3px rgba(201,169,110,0.08);
+      background: rgba(255,255,255,0.06);
+    }
+    .open-reflection textarea { min-height: 100px; }
+
+    .save-status {
+      text-align: right;
+      font-size: 11px;
+      color: rgba(255,255,255,0.14);
+      margin-top: 3px;
+      height: 15px;
+      padding-right: 2px;
+    }
+    .save-status.saved { color: #5a9e6f; }
+
+    hr.thin {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin: 22px 0 16px;
+    }
+
+    .past-toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 4px 0;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .past-toggle .ptlabel {
+      font-size: 10px;
+      font-weight: 700;
+      color: #2a3f58;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .chevron { font-size: 12px; color: #2a3f58; transition: transform 0.2s; }
+    .chevron.open { transform: rotate(180deg); }
+
+    .past-list { display: none; margin-top: 12px; }
+    .past-list.visible { display: block; }
+
+    .past-entry {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .past-entry:hover { background: rgba(255,255,255,0.06); }
+    .pe-date { font-size: 10px; font-weight: 700; color: #c9a96e; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
+    .pe-preview { font-size: 13px; color: #3a4f68; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.5; }
+    .no-entries { text-align: center; color: #1e3050; font-size: 13px; padding: 18px 0; }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 300;
+      padding: 20px 16px;
+      align-items: flex-end;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #0f1e30;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 22px 22px 18px 18px;
+      padding: 24px 20px 36px;
+      width: 100%;
+      max-width: 480px;
+      max-height: 72vh;
+      overflow-y: auto;
+      animation: slideUp 0.2s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(28px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .modal-hdr { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .modal-mdate { font-size: 10px; font-weight: 700; color: #c9a96e; text-transform: uppercase; letter-spacing: 0.8px; }
+    .modal-close-btn { background: rgba(255,255,255,0.07); border: none; color: #5a6878; padding: 5px 11px; border-radius: 8px; cursor: pointer; font-size: 15px; line-height: 1.3; }
+    .msec { margin-bottom: 18px; }
+    .msec-label { font-size: 10px; font-weight: 700; color: #5a82b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .msec-text { font-size: 14px; color: #7a9abf; line-height: 1.7; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="church-name">New Life Dubai · Prayer &amp; Praise Night</div>
+  <div class="series-title">Come Before <span>Him</span></div>
+  <div class="series-sub">A Seven-Day Devotional</div>
+  <div class="intro-note">
+    <strong class="note-tag">A Note for the Week</strong>
+    <p>Saturday was different. No message. No outline. Just a room of people who stopped talking about God and started talking to Him. These seven days are built around what we practiced together in that room. Let's carry it into the rest of the week.</p>
+  </div>
+</header>
+
+<!-- Tab bar -->
+<nav class="tab-bar" id="tab-bar" aria-label="Day navigation"></nav>
+
+<!-- Content -->
+<main class="page" id="page"></main>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal" onclick="closeModalBg(event)">
+  <div class="modal-box">
+    <div class="modal-hdr">
+      <div class="modal-mdate" id="modal-date"></div>
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// ── Devotional content ──────────────────────────────────────────────────────
+
+const DAYS = [
+  {
+    label: 'Day 1 · Sunday',
+    title: 'The Door Is Always Open',
+    scripture: 'Psalm 100 | Hebrews 10:19–22',
+    reflection: `We treat prayer like a hotline for emergencies. We pick it up when something breaks, when the situation runs ahead of us, when we've exhausted every other option. And then we put it down again.
+
+But Psalm 100 describes a completely different relationship — <em>enter his gates with thanksgiving, his courts with praise.</em> This is not emergency access. This is a standing invitation.
+
+Hebrews 10:22 uses the phrase "draw near" — and it carries the weight of deliberate approach. You have access not because of what you've done but because of what He has done. The veil was torn. The price was paid. The Father is not too busy for you. But access only benefits the people who actually use it. The question is never whether God is available. The question is whether we show up.`,
+    application: 'When do you most consistently approach God — and what would it look like to treat prayer less like a crisis tool and more like a standing daily practice this week?',
+  },
+  {
+    label: 'Day 2 · Monday',
+    title: 'You Don\'t Have to Have the Right Words',
+    scripture: 'Romans 8:26–27 | Matthew 6:7–8',
+    reflection: `One of the most common reasons people don't pray is this — they don't feel like they know how. They're afraid of saying the wrong thing, sounding repetitive, not being eloquent enough.
+
+I want to tell you today: the pressure you feel is not coming from God. Romans 8:26 says the Spirit <em>helps in our weakness.</em> The Greek word for "helps" means to take hold of together with — to support from the other side. You are not praying alone.
+
+When you run out of words, the Spirit doesn't stop. He intercedes with groanings that words can't contain. You bring what you have. He supplies what you don't. This does not mean prayer is passive — but it means the standard for entering is not eloquence. It's honesty. Bring your real self. The Spirit knows exactly how to translate that.`,
+    application: 'Is there something you\'ve been holding back from God because you weren\'t sure how to say it — and what would it mean to bring that exact thing, words or not, into prayer today?',
+  },
+  {
+    label: 'Day 3 · Tuesday',
+    title: 'The Praise That Doesn\'t Depend on Circumstances',
+    scripture: 'Habakkuk 3:17–19 | Psalm 34:1',
+    reflection: `Habakkuk is one of the strangest books in the Bible. The prophet is watching his nation collapse. He's asking God honest, hard questions — why are you silent? Why aren't you doing something?
+
+And then — in the last verses of the last chapter — he lands on something that stops you cold. <em>Though the fig tree does not blossom, and there is no fruit on the vines, though the fields produce no food — yet I will rejoice in the Lord.</em> He names everything that's wrong. All of it. And then he praises anyway.
+
+This is not toxic positivity. This is not pretending the loss isn't real. This is a decision — made in full awareness of the hard thing — that God's character is not determined by what is happening around him. Psalm 34:1 says <em>"I will bless the Lord at all times."</em> Not when I feel it. Not when the evidence supports it. At all times. That kind of praise requires something deeper than mood. It requires a settled conviction about who God is that the circumstances cannot reach.`,
+    application: 'What is one situation in your life right now where praise feels difficult — and what would it look like to practice Habakkuk\'s decision: not because the situation changed, but because God hasn\'t?',
+  },
+  {
+    label: 'Day 4 · Wednesday',
+    title: 'What You\'re Actually Doing When You Pray',
+    scripture: 'Philippians 4:6–7 | 1 John 5:14–15',
+    reflection: `Philippians 4:6 is one of the most quoted verses in the New Testament. <em>"Be anxious for nothing, but in everything by prayer and supplication, with thanksgiving, let your requests be made known to God."</em>
+
+Most people stop there. Read the next verse. <em>"And the peace of God, which surpasses all understanding, will guard your hearts and minds through Christ Jesus."</em>
+
+Notice what the promise is. You pray — and the thing that changes is not necessarily the circumstance. It's <em>you.</em> The peace that passes understanding stands guard over your heart and mind. <strong>Write this down: prayer is not primarily a mechanism for changing your situation. Prayer is a mechanism for changing you in the middle of your situation.</strong> That's not a small thing. That is the most powerful thing. You bring your anxiety to God and you walk away carrying a peace the world did not give you and the world cannot take.`,
+    application: 'Think about a burden you\'ve been carrying this week — what would genuinely laying it down in prayer look like today, and what do you think would be different about you if you did?',
+  },
+  {
+    label: 'Day 5 · Thursday',
+    title: 'The Prayer That Moves Heaven',
+    scripture: 'Acts 4:23–31',
+    reflection: `The early church is under threat. Peter and John have just been dragged before the Sanhedrin, warned to stop speaking in the name of Jesus, and released. They walk straight back to their people and report what happened.
+
+And what does the community do? They pray together. Read Acts 4:24 — they lifted their voices to God <em>together.</em> Not in panic. Not in protest. They addressed God as the Sovereign Lord who made heaven and earth. They brought Scripture into the room. They named the specific threat — and placed it against the backdrop of who God was.
+
+And then notice what they actually asked for. Not safety. Not an easier situation. <strong>Boldness. God's hand moving.</strong> They prayed <em>into</em> the storm, not away from it. And the place was shaken. The sequence is always the same: the pressure comes first. The prayer comes second. The shaking is up to God.`,
+    application: 'When you face opposition or unexpected pressure, what is your first instinct — and how does the early church\'s response in Acts 4 challenge or reframe that?',
+  },
+  {
+    label: 'Day 6 · Friday',
+    title: 'Praise Before the Breakthrough',
+    scripture: '2 Chronicles 20:14–22',
+    reflection: `Jehoshaphat is facing an army he cannot defeat. His first move was to seek the Lord. And he prays one of the most honest prayers in all of Scripture: <em>"We do not know what to do, but our eyes are on you."</em>
+
+God answers. The battle belongs to the Lord. But here is the part of the story that most people walk past: verse 21. Jehoshaphat doesn't send warriors first. He sends <em>singers.</em> People appointed to praise the beauty of holiness, singing <em>"Give thanks to the Lord, for his mercy endures forever."</em> They walked into the battlefield worshipping.
+
+And in verse 22 — as they began to sing and to praise — the Lord set ambushes against the enemy. <strong>The praise preceded the victory. Not followed it. Preceded it.</strong> There is something about the posture of praise — declaring who God is before you see the outcome — that releases something in the spirit we cannot fully explain. But the biblical record is consistent on this: worship and warfare are not separate categories in God's economy.`,
+    application: 'Where in your life are you waiting to praise God until after you see the breakthrough — and what would it cost you to start praising now, before the outcome is clear?',
+  },
+  {
+    label: 'Day 7 · Saturday',
+    title: 'You Become What You Behold',
+    scripture: '2 Corinthians 3:18 | Romans 8:29',
+    reflection: `2 Corinthians 3:18 is one of the most quietly powerful verses in the New Testament. <em>"We all, with unveiled face, beholding as in a mirror the glory of the Lord, are being transformed into the same image from glory to glory, just as by the Spirit of the Lord."</em>
+
+Read it slowly. The transformation is not happening through effort alone. It's happening through <em>beholding.</em> You become what you consistently look at. You are shaped by what you habitually bring your attention to.
+
+That's the whole logic of prayer and praise — not as religious duty, but as the ongoing practice of turning your face toward God and staying there long enough to be changed by what you see. And Romans 8:29 tells us what God is doing through all of it: conforming us to the image of His Son. Not correcting you. Not managing you. <strong>Remaking you — from glory to glory.</strong> That is not a moment. That is a life.`,
+    application: 'Looking back at this week — what shifted in you through these seven days, and what is one practice from prayer and praise that you want to carry into the months ahead?',
+  },
+];
+
+// ── Journal config ──────────────────────────────────────────────────────────
+
+const STORAGE_KEY = 'nld_come_before_him_v1';
+const FIELDS = ['spoke', 'apply', 'prayer', 'extra'];
+const FIELD_META = {
+  spoke:  { icon: '💡', label: 'What spoke to me today?' },
+  apply:  { icon: '🚶', label: 'How will I apply this?' },
+  prayer: { icon: '🙏', label: 'My prayer today' },
+  extra:  { icon: '📝', label: 'Additional thoughts' },
+};
+
+// ── Date helpers ─────────────────────────────────────────────────────────────
+
+const now       = new Date();
+const todayDOW  = now.getDay();
+let   activeIdx = todayDOW;
+
+function dateForIndex(i) {
+  const d = new Date(now);
+  d.setDate(d.getDate() - (todayDOW - i));
+  return d;
+}
+function keyForIndex(i) {
+  return dateForIndex(i).toISOString().split('T')[0];
+}
+function labelForIndex(i) {
+  return dateForIndex(i).toLocaleDateString('en-US', {
+    weekday: 'long', month: 'long', day: 'numeric'
+  });
+}
+
+// ── Storage ──────────────────────────────────────────────────────────────────
+
+function loadAll() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+  catch { return {}; }
+}
+function saveAll(data) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+  catch(e) { console.warn(e); }
+}
+function hasEntry(i) {
+  const d = loadAll()[keyForIndex(i)];
+  return d && FIELDS.some(f => d[f] && d[f].trim());
+}
+
+// ── Tabs ─────────────────────────────────────────────────────────────────────
+
+const SHORT = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+function renderTabs() {
+  document.getElementById('tab-bar').innerHTML = DAYS.map((_, i) =>
+    `<button class="day-tab${i === activeIdx ? ' active' : ''}" onclick="switchDay(${i})" aria-pressed="${i === activeIdx}">
+      ${SHORT[i]} · ${i + 1}${hasEntry(i) ? '<span class="dot"></span>' : ''}
+    </button>`
+  ).join('');
+}
+
+// ── Page ─────────────────────────────────────────────────────────────────────
+
+const saveTimers = {};
+
+function renderPage() {
+  const dev       = DAYS[activeIdx];
+  const key       = keyForIndex(activeIdx);
+  const dateLabel = labelForIndex(activeIdx);
+  const isToday   = activeIdx === todayDOW;
+  const stored    = (loadAll()[key] || {});
+
+  const reflHtml = dev.reflection.split('\n\n')
+    .map(p => `<p>${p}</p>`).join('');
+
+  document.getElementById('page').innerHTML = `
+    <div class="day-eyebrow">${dev.label}</div>
+    <h2 class="day-title">${dev.title}</h2>
+
+    <div class="scripture-block">
+      <div class="scripture-tag">📖 Scripture Reading</div>
+      <div class="scripture-ref">${dev.scripture}</div>
+    </div>
+
+    <div class="section-tag">Reflection</div>
+    <div class="reflection-body">${reflHtml}</div>
+
+    <div class="dots">· · ·</div>
+
+    <div class="app-block">
+      <div class="app-tag">✦ Application Question</div>
+      <div class="app-question">${dev.application}</div>
+    </div>
+
+    <div class="section-divider"><span>✍️ My Journal</span></div>
+
+    <div class="journal-card">
+      <div class="journal-heading">My Reflection</div>
+      <div class="journal-date">${dateLabel}${isToday ? ' · Today' : ''}</div>
+
+      ${FIELDS.map(f => `
+        <div class="prompt-group${f === 'extra' ? ' open-reflection' : ''}">
+          <div class="prompt-label">${FIELD_META[f].icon} ${FIELD_META[f].label}</div>
+          <textarea id="j-${f}" placeholder="Write here…" rows="3" aria-label="${FIELD_META[f].label}"></textarea>
+          <div class="save-status" id="js-${f}"></div>
+        </div>
+      `).join('')}
+
+      <hr class="thin">
+      <div class="past-toggle" id="past-toggle" onclick="togglePast()">
+        <div class="ptlabel">📖 Past Entries</div>
+        <span class="chevron" id="chevron">▾</span>
+      </div>
+      <div class="past-list" id="past-list" role="list"></div>
+    </div>
+  `;
+
+  FIELDS.forEach(f => {
+    const el = document.getElementById('j-' + f);
+    el.value = stored[f] || '';
+    el.addEventListener('input', () => {
+      autoResize(el);
+      scheduleAutosave(f, key, dateLabel);
+    });
+    autoResize(el);
+  });
+
+  pastOpen = false;
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.max(el.scrollHeight, 80) + 'px';
+}
+
+function scheduleAutosave(field, key, dateLabel) {
+  const status = document.getElementById('js-' + field);
+  if (status) { status.textContent = 'Saving…'; status.className = 'save-status'; }
+  clearTimeout(saveTimers[field]);
+  saveTimers[field] = setTimeout(() => {
+    const data = loadAll();
+    if (!data[key]) data[key] = { date: dateLabel };
+    data[key][field] = document.getElementById('j-' + field)?.value || '';
+    saveAll(data);
+    renderTabs();
+    if (status) {
+      status.textContent = '✓ Saved';
+      status.className = 'save-status saved';
+      setTimeout(() => { if (status) status.textContent = ''; }, 2000);
+    }
+  }, 700);
+}
+
+function switchDay(i) {
+  activeIdx = i;
+  renderTabs();
+  renderPage();
+  pastOpen = false;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+let pastOpen = false;
+
+function togglePast() {
+  pastOpen = !pastOpen;
+  document.getElementById('past-list').classList.toggle('visible', pastOpen);
+  document.getElementById('chevron').classList.toggle('open', pastOpen);
+  if (pastOpen) renderPastList();
+}
+
+function renderPastList() {
+  const data = loadAll();
+  const listEl = document.getElementById('past-list');
+  if (!listEl) return;
+  const entries = Object.entries(data)
+    .filter(([k]) => /^\d{4}-\d{2}-\d{2}$/.test(k))
+    .sort((a, b) => b[0].localeCompare(a[0]));
+  if (!entries.length) {
+    listEl.innerHTML = '<div class="no-entries">No entries yet. Keep going! 🌱</div>';
+    return;
+  }
+  listEl.innerHTML = entries.map(([k, e]) => {
+    const preview = (e.spoke || e.apply || e.prayer || e.extra || '').trim().substring(0, 120);
+    return `<div class="past-entry" onclick="openEntry('${k}')">
+      <div class="pe-date">${e.date || k}</div>
+      <div class="pe-preview">${preview || '<em>No content</em>'}</div>
+    </div>`;
+  }).join('');
+}
+
+function openEntry(key) {
+  const e = (loadAll()[key] || {});
+  document.getElementById('modal-date').textContent = e.date || key;
+  const sections = FIELDS.filter(f => e[f] && e[f].trim()).map(f =>
+    `<div class="msec">
+      <div class="msec-label">${FIELD_META[f].icon} ${FIELD_META[f].label}</div>
+      <div class="msec-text">${e[f].replace(/</g,'&lt;')}</div>
+    </div>`
+  ).join('');
+  document.getElementById('modal-body').innerHTML =
+    sections || '<div class="no-entries">Nothing written that day.</div>';
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModalBg(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── Boot ─────────────────────────────────────────────────────────────────────
+renderTabs();
+renderPage();
+</script>
+</body>
+</html>
